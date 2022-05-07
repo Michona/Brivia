@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "690683147136",
+    "project_id": "brivia-6f3f5",
+    "storage_bucket": "brivia-6f3f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:690683147136:android:4ab1d4d24f17e40f6c0765",
+        "android_client_info": {
+          "package_name": "com.uni.brivia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "690683147136-m65bk2u8vv3l79j95u4ak1ebseh08jtk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uni.brivia",
+            "certificate_hash": "2e8259c981fac4767f9a5eaa98dc68e3c9b0543d"
+          }
+        },
+        {
+          "client_id": "690683147136-4gof6hqcdn1f7bnb2um088g08g59gnt3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHQp3RkmcJKxDTp29EaetjCzu0CIcOgnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "690683147136-4gof6hqcdn1f7bnb2um088g08g59gnt3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
