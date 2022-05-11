@@ -20,5 +20,4 @@ public class BaseApplication extends Application {
             Timber.plant(new DebugTree());
         }
     }
-
 }

@@ -6,21 +6,25 @@ import androidx.lifecycle.ViewModel;
 
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.uni.brivia.domain.AuthRepository;
 
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
-import timber.log.Timber;
 
 @HiltViewModel
 public class LoginViewModel extends ViewModel {
+
+    private final AuthRepository mAuthRepository;
 
     public final MutableLiveData<Boolean> shouldInvokeGoogleSignIn;
 
     public final MutableLiveData<Boolean> navigateHome;
 
     @Inject
-    public LoginViewModel() {
+    LoginViewModel(AuthRepository authRepository) {
+        this.mAuthRepository = authRepository;
+
         shouldInvokeGoogleSignIn = new MutableLiveData<>(false);
         navigateHome = new MutableLiveData<>(false);
 
