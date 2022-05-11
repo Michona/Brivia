@@ -7,10 +7,12 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.uni.brivia.view.LoginFragment"
-        android:label="LoginFragment" >
+        android:label="LoginFragment">
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/loginFragment" />
     </fragment>
 
     <fragment

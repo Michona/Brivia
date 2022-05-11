@@ -1,6 +1,7 @@
 package com.uni.brivia.view;
 
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.uni.brivia.R;
 import com.uni.brivia.base.BaseFragment;
@@ -8,7 +9,6 @@ import com.uni.brivia.databinding.FragmentLoginBinding;
 import com.uni.brivia.viewmodels.LoginViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
-import timber.log.Timber;
 
 @AndroidEntryPoint
 public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
@@ -21,14 +21,14 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
 
     @Override
     protected void onBind() {
-        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+        loginViewModel = new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
 
-        mBind.continueWithGoogle.setOnClickListener(v -> {
-            loginViewModel.onContinueWithGoogle();
-        });
+        mBind.continueWithGoogle.setOnClickListener(view -> loginViewModel.onContinueWithGoogle());
 
-        loginViewModel.mObservableProduct.observe(getViewLifecycleOwner(), product -> {
-            Timber.d(product.toString());
+        loginViewModel.navigateHome.observe(getViewLifecycleOwner(), shouldNavigate -> {
+            if (shouldNavigate) {
+                NavHostFragment.findNavController(this).navigate(R.id.action_loginFragment_to_homeFragment);
+            }
         });
     }
 }
