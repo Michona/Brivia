@@ -1,12 +1,14 @@
 package com.uni.brivia.viewmodels;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.uni.brivia.db.entity.UserEntity;
 import com.uni.brivia.domain.AuthRepository;
+
+import java.time.temporal.ChronoField;
+import java.util.Date;
 
 import javax.inject.Inject;
 
@@ -17,9 +19,12 @@ public class HomeViewModel extends ViewModel {
 
     private final AuthRepository mAuthRepository;
 
+    public Date todayDate;
+
     @Inject
     HomeViewModel(@NonNull AuthRepository authRepository) {
         this.mAuthRepository = authRepository;
+        this.todayDate = new Date(System.currentTimeMillis());
     }
 
     /**
@@ -27,5 +32,18 @@ public class HomeViewModel extends ViewModel {
      */
     public LiveData<UserEntity> getCurrentUser() {
         return mAuthRepository.getCurrentUser();
+    }
+
+    /**
+     * @return true if the user can play the game today.
+     */
+    public Boolean canUserPlay(UserEntity user) {
+        if (user == null) {
+            return false;
+        }
+        if (user.getLastPlayed() == null) {
+            return true;
+        }
+        return user.getLastPlayed().toInstant().get(ChronoField.DAY_OF_YEAR) == todayDate.toInstant().get(ChronoField.DAY_OF_YEAR);
     }
 }

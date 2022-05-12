@@ -51,6 +51,36 @@
             app:layout_constraintRight_toRightOf="@id/vOvalBg"
             app:layout_constraintTop_toTopOf="@id/vOvalBg" />
 
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/vIndicator"
+            style="@style/Brivia.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/vOvalBg"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/vOvalBg" />
+
+        <TextView
+            android:id="@+id/vGoRemainingTimer"
+            style="@style/Brivia.Font.H1.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/vOvalBg"
+            app:layout_constraintLeft_toLeftOf="@id/vOvalBg"
+            app:layout_constraintRight_toRightOf="@id/vOvalBg"
+            app:layout_constraintTop_toTopOf="@id/vOvalBg" />
+
+        <TextView
+            android:id="@+id/vGoRemainingDescrr"
+            style="@style/Brivia.Font.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/until_next"
+            app:layout_constraintBottom_toTopOf="@id/vGoRemainingTimer"
+            app:layout_constraintLeft_toLeftOf="@id/vOvalBg"
+            app:layout_constraintRight_toRightOf="@id/vOvalBg" />
+
         <TextView
             android:id="@+id/vTextHow"
             style="@style/Brivia.Font.Label"
