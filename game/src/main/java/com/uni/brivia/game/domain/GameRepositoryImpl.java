@@ -2,39 +2,117 @@ package com.uni.brivia.game.domain;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Transformations;
 
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.uni.brivia.core.AppExecutors;
+import com.uni.brivia.core.FirestoreService;
 import com.uni.brivia.core.api.IGameRepository;
 import com.uni.brivia.core.data.GameResult;
 import com.uni.brivia.core.data.QuestionEntity;
+import com.uni.brivia.core.db.dao.QuestionsDao;
+
+import java.util.Calendar;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+
+import timber.log.Timber;
 
 @Singleton
 public class GameRepositoryImpl implements IGameRepository {
 
     private final AppExecutors mExecutors;
 
-    @Inject
-    GameRepositoryImpl(@NonNull AppExecutors executors) {
-        this.mExecutors = executors;
+    private final FirestoreService mFirestoreService;
 
-        // todo: sync with firestore and update room.
+    private final QuestionsDao mQuestionsDao;
+
+
+    /**
+     * Randomly chosen from the list of questions.
+     * Answers from users are compared to this.
+     */
+    private QuestionEntity mTodayQuestion;
+
+    @Inject
+    GameRepositoryImpl(@NonNull AppExecutors executors, @NonNull FirestoreService firestoreService, @NonNull QuestionsDao questionsDao) {
+        this.mExecutors = executors;
+        this.mFirestoreService = firestoreService;
+        this.mQuestionsDao = questionsDao;
+
+        fetchQuestions();
     }
 
     @Override
-    public GameResult uploadAnswerChoice(String answerId) {
-        return new GameResult(true, 10, 2);
+    public GameResult uploadAnswerChoice(Integer answerId) {
+        if (mTodayQuestion.getCorrectAnswerId().equals(answerId)) {
+            /* Question is correct! */
+            return new GameResult(true, POINTS_FOR_SUCCESS, POINTS_FOR_TRYING);
+        } else {
+            /* Question is not correct */
+            return new GameResult(false, POINTS_FOR_ERROR, POINTS_FOR_TRYING);
+        }
     }
 
     @Override
     public GameResult timeUp() {
-        return new GameResult(false, -5, 2);
+        return new GameResult(false, POINTS_FOR_ERROR, POINTS_FOR_TRYING);
     }
 
     @Override
     public LiveData<QuestionEntity> getDailyQuestion() {
-        return null;
+        return Transformations.map(mQuestionsDao.getQuestions(), questions -> {
+            if (questions.isEmpty()) {
+                return null;
+            } else {
+                mTodayQuestion = questions.stream().sorted(new QuestionsComparator()).collect(Collectors.toList()).get(getRandomQuestionPosition());
+                return mTodayQuestion;
+            }
+        });
     }
+
+    private static class QuestionsComparator implements Comparator<QuestionEntity> {
+        @Override
+        public int compare(QuestionEntity current, QuestionEntity next) {
+            return current.getId().compareTo(next.getId());
+        }
+    }
+
+    /**
+     * Based on today's date it chooses an id for question.
+     * It's so that everyone gets the same question for the same day.
+     */
+    @NonNull
+    private Integer getRandomQuestionPosition() {
+        int dayInMonth = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        return dayInMonth % QUESTION_MAX;
+    }
+
+    private void fetchQuestions() {
+        mFirestoreService.getQuestionsCollection().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                for (QueryDocumentSnapshot document : task.getResult()) {
+                    insertToDb(document);
+                }
+            } else {
+                Timber.e("Cannot fetch questions.");
+            }
+        });
+    }
+
+    private void insertToDb(QueryDocumentSnapshot document) {
+        mExecutors.diskIO().execute(() -> mQuestionsDao.insert(FirestoreService.parseQuestion(document.getData())));
+    }
+
+    /**
+     * TODO: This will be dynamic in the future
+     */
+    private static final int POINTS_FOR_SUCCESS = 12;
+    private static final int POINTS_FOR_ERROR = -5;
+    private static final int POINTS_FOR_TRYING = 2;
+
+    private static final int QUESTION_MAX = 2;
 }

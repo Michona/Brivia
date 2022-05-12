@@ -31,8 +31,8 @@ public class GameViewModel extends ViewModel {
         result = new MutableLiveData<>(null);
     }
 
-    public void onAnswerClicked(int position) {
-        result.postValue(mGameRepository.uploadAnswerChoice("TODO"));
+    public void onAnswerClicked(int positionId) {
+        result.postValue(mGameRepository.uploadAnswerChoice(positionId));
     }
 
     public void timeUp() {

@@ -5,7 +5,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @Entity(tableName = "questions")
 public class QuestionEntity {
@@ -13,29 +13,29 @@ public class QuestionEntity {
     @NonNull
     @PrimaryKey
     @ColumnInfo(name = "id")
-    private final Integer mId;
+    private String mId;
 
     @NonNull
     @ColumnInfo(name = "content")
-    private final String mContent;
+    private String mContent;
 
     @NonNull
-    @ColumnInfo(name = "answers")
-    private final List<AnswerEntity> mAnswers;
+    @ColumnInfo(name = "answer-options")
+    private ArrayList<String> mAnswers;
 
     @NonNull
     @ColumnInfo(name = "correct-answer-id")
-    private final String mCorrectAnswerId;
+    private Integer mCorrectAnswerId;
 
-    public QuestionEntity(@NonNull Integer id, @NonNull String content, @NonNull List<AnswerEntity> answers, @NonNull String answerId) {
+    public QuestionEntity(@NonNull String id, @NonNull String content, @NonNull ArrayList<String> answers, @NonNull Integer correctAnswerId) {
         this.mId = id;
         this.mContent = content;
         this.mAnswers = answers;
-        this.mCorrectAnswerId = answerId;
+        this.mCorrectAnswerId = correctAnswerId;
     }
 
     @NonNull
-    public Integer getId() {
+    public String getId() {
         return mId;
     }
 
@@ -45,12 +45,12 @@ public class QuestionEntity {
     }
 
     @NonNull
-    public List<AnswerEntity> getAnswers() {
+    public ArrayList<String> getAnswers() {
         return mAnswers;
     }
 
     @NonNull
-    public String getCorrectAnswerId() {
+    public Integer getCorrectAnswerId() {
         return mCorrectAnswerId;
     }
 }

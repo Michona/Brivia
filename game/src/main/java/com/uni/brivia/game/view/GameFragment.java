@@ -37,6 +37,15 @@ public class GameFragment extends BaseFragment<FragmentGameBinding> {
             }
         });
 
+        viewModel.getQuestion().observe(getViewLifecycleOwner(), question -> {
+            if (question != null) {
+                mBind.vQuestion.setText(question.getContent());
+                mBind.vFirstAnswer.setText(question.getAnswers().get(0));
+                mBind.vSecondAnswer.setText(question.getAnswers().get(1));
+                mBind.vThirdAnswer.setText(question.getAnswers().get(2));
+            }
+        });
+
         setupAnswers();
     }
 

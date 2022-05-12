@@ -15,12 +15,13 @@ public interface IGameRepository {
      *
      * @return {@link GameResult} if the answer is correct or not and points received
      */
-    GameResult uploadAnswerChoice(String answerId);
+    GameResult uploadAnswerChoice(Integer answerId);
 
     /**
      * Called when the time elapses and user hasn't given an answer.
+     *
      * @return {@link GameResult} when the time is up.
-     * */
+     */
     GameResult timeUp();
 
     /**

@@ -8,6 +8,7 @@ import androidx.room.Room;
 import com.uni.brivia.core.api.IAuthRepository;
 import com.uni.brivia.core.api.IGameRepository;
 import com.uni.brivia.core.db.AppDatabase;
+import com.uni.brivia.core.db.dao.QuestionsDao;
 import com.uni.brivia.core.db.dao.UserDao;
 import com.uni.brivia.domain.AuthRepositoryImpl;
 import com.uni.brivia.game.domain.GameRepositoryImpl;
@@ -23,7 +24,7 @@ import dagger.hilt.components.SingletonComponent;
 
 @Module
 @InstallIn(SingletonComponent.class)
-public abstract class DbModule {
+public abstract class AppModule {
     private static final String DB_NAME = "brivia-db";
 
     @Provides
@@ -38,6 +39,11 @@ public abstract class DbModule {
     @Provides
     static UserDao provideUserDao(AppDatabase database) {
         return database.userDao();
+    }
+
+    @Provides
+    static QuestionsDao provideQuestionsDao(AppDatabase database) {
+        return database.questionsDao();
     }
 
     @Binds

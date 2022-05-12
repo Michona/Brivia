@@ -5,13 +5,16 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
+import com.uni.brivia.core.data.QuestionEntity;
 import com.uni.brivia.core.data.UserEntity;
 
 import org.jetbrains.annotations.Contract;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,6 +59,21 @@ public class FirestoreService {
         return db.collection(COLLECTION_USERS).get();
     }
 
+    /**
+     * @return the {@link Task} for the document to fetch the current user from server.
+     */
+    public Task<DocumentSnapshot> getUserDocument(String uid) {
+        return db.collection(COLLECTION_USERS).document(uid).get();
+    }
+
+    /**
+     * @return the {@link Task} for the query to fetch the collection containing all of the question.
+     */
+    public Task<QuerySnapshot> getQuestionsCollection() {
+        return db.collection(COLLECTION_QUESTIONS).get();
+    }
+
+    //region Parsing
 
     /**
      * Parses the user hashmap we receive from the server into our own {@link UserEntity}
@@ -79,9 +97,32 @@ public class FirestoreService {
         );
     }
 
+
+    /**
+     * Parses the question hashmap we receive from the server into our own {@link QuestionEntity}
+     */
+    @SuppressWarnings({"ConstantConditions", "unchecked"})
+    @NonNull
+    public static QuestionEntity parseQuestion(@NonNull Map<String, Object> questionMap) {
+        return new QuestionEntity(
+                (String) questionMap.get(ID_KEY),
+                (String) questionMap.get(CONTENT_KEY),
+                (ArrayList<String>) questionMap.get(ANSWERS_KEY),
+                Math.toIntExact((Long) questionMap.get(CORRECT_ANSWER_KEY)));
+    }
+
+    //endregion
+
     private static final String COLLECTION_USERS = "users";
     private static final String USER_KEY_NAME = "name";
     private static final String USER_KEY_ID = "uid";
     private static final String USER_KEY_TIMESTAMP = "last-played-timestamp";
     private static final String USER_KEY_SCORE = "score";
+
+
+    private static final String COLLECTION_QUESTIONS = "questions";
+    private static final String CONTENT_KEY = "content";
+    private static final String ID_KEY = "id";
+    private static final String CORRECT_ANSWER_KEY = "correct-answer-id";
+    private static final String ANSWERS_KEY = "answer-options";
 }

@@ -13,9 +13,6 @@ import java.util.List;
 @Dao
 public interface UserDao {
 
-    /**
-     * TODO: docs
-     */
     @Query("SELECT * FROM Users")
     LiveData<List<UserEntity>> getUsers();
 
