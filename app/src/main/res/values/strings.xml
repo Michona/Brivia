@@ -8,5 +8,8 @@
     <string name="how">How do I play?</string>
     <string name="find_out">Find out here!</string>
     <string name="until_next">Next round in</string>
+    <string name="highscore">High Scores</string>
+    <string name="sample_description">Good player?</string>
+    <string name="you">You</string>
 
 </resources>

@@ -39,7 +39,25 @@ public class AuthRepository {
         this.mExecutors = executors;
         this.mFirestoreService = firestoreService;
 
-        subscribeToUsers();
+        fetchUsers();
+    }
+
+
+    /**
+     * @return all the users that are saved in the DataBase.
+     */
+    public LiveData<List<UserEntity>> getUsers() {
+        return mUserDao.getUsers();
+    }
+
+    /**
+     * Goes through all the users in our database and finds the user that matched the ID in {@link FirebaseAuth#getCurrentUser()}.
+     *
+     * @return LiveData of the current users data (wrapped in {@link UserEntity}), or null if not found.
+     */
+    @SuppressWarnings("ConstantConditions")
+    public LiveData<UserEntity> getCurrentUser() {
+        return mUserDao.getCurrentUser(mFireAuth.getCurrentUser().getUid());
     }
 
     /**
@@ -51,8 +69,7 @@ public class AuthRepository {
         mFirestoreService.createUser(authResult)
                 .addOnSuccessListener(res -> {
                     /* After created fetch user collection again. */
-                    subscribeToUsers();
-                    Timber.d("Document added");
+                    fetchUsers();
                 })
                 .addOnFailureListener(Timber::e);
     }
@@ -61,7 +78,7 @@ public class AuthRepository {
      * Listens to changes from Server and updates disk.
      * Called when this repository is created.
      */
-    private void subscribeToUsers() {
+    private void fetchUsers() {
         mFirestoreService.getUserCollection().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 for (QueryDocumentSnapshot document : task.getResult()) {
@@ -74,20 +91,7 @@ public class AuthRepository {
     }
 
     private void insertToDb(QueryDocumentSnapshot document) {
+        Timber.d("Inserting to DB");
         mExecutors.diskIO().execute(() -> mUserDao.insertUser(FirestoreService.parseUser(document.getData())));
-    }
-
-    public LiveData<List<UserEntity>> getUsers() {
-        return mUserDao.getUsers();
-    }
-
-    /**
-     * Goes through all the users in out database and finds the user that matched the ID in {@link FirebaseAuth#getCurrentUser()}.
-     *
-     * @return LiveData of the current users data (wrapped in {@link UserEntity}), or null if not found.
-     */
-    @SuppressWarnings("ConstantConditions")
-    public LiveData<UserEntity> getCurrentUser() {
-        return mUserDao.getCurrentUser(mFireAuth.getCurrentUser().getUid());
     }
 }

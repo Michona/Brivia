@@ -5,14 +5,13 @@ import android.os.CountDownTimer;
 import android.view.View;
 
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.uni.brivia.R;
 import com.uni.brivia.base.BaseFragment;
 import com.uni.brivia.databinding.FragmentHomeBinding;
 import com.uni.brivia.domain.CountdownHelper;
 import com.uni.brivia.viewmodels.HomeViewModel;
-
-import java.util.concurrent.TimeUnit;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import timber.log.Timber;
@@ -55,18 +54,26 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
         });
 
         startCountdown();
-
-        mBind.vOvalBg.setOnClickListener(v -> {
-            if (homeViewModel.canUserPlay(homeViewModel.getCurrentUser().getValue())) {
-                // todo:
-            }
-        });
+        setupClickListeners();
     }
 
     @Override
     public void onDestroyView() {
+        endOfDayTimer.cancel();
         endOfDayTimer = null;
         super.onDestroyView();
+    }
+
+    private void setupClickListeners() {
+        mBind.vOvalBg.setOnClickListener(v -> {
+            if (homeViewModel.canUserPlay(homeViewModel.getCurrentUser().getValue())) {
+                // todo: open game
+            }
+        });
+
+        mBind.vFAB.setOnClickListener(v -> {
+            NavHostFragment.findNavController(this).navigate(R.id.action_homeFragment_to_highScoreFragment);
+        });
     }
 
     private void startCountdown() {
@@ -78,7 +85,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
             }
 
             public void onFinish() {
-                Timber.d("Countdown done.");
+                Timber.d("Countdown done");
             }
         }.start();
     }
