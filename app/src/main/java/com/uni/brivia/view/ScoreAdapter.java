@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.uni.brivia.R;
-import com.uni.brivia.databinding.ItemScoreBinding;
 import com.uni.brivia.core.data.UserEntity;
+import com.uni.brivia.databinding.ItemScoreBinding;
 
 import java.util.List;
 
@@ -73,11 +73,11 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ScoreViewHol
         UserEntity entity = mUsersList.get(position);
 
         if (entity.getId().equals(mUserId)) {
-            holder.binding.vName.setText(R.string.you);
-            holder.binding.vName.setTextColor(holder.binding.getRoot().getContext().getResources().getColor(R.color.red));
+            holder.binding.vName.setText(com.uni.brivia.core.R.string.you);
+            holder.binding.vName.setTextColor(holder.binding.getRoot().getContext().getResources().getColor(com.uni.brivia.core.R.color.red));
         } else {
             holder.binding.vName.setText(entity.getUserName());
-            holder.binding.vName.setTextColor(holder.binding.getRoot().getContext().getResources().getColor(R.color.black));
+            holder.binding.vName.setTextColor(holder.binding.getRoot().getContext().getResources().getColor(com.uni.brivia.core.R.color.black));
         }
         holder.binding.vScore.setText(String.valueOf(entity.getScore()));
 

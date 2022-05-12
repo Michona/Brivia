@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.uni.brivia.R;
-import com.uni.brivia.base.BaseFragment;
+import com.uni.brivia.core.base.BaseFragment;
 import com.uni.brivia.databinding.FragmentLoginBinding;
 import com.uni.brivia.viewmodels.LoginViewModel;
 

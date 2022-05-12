@@ -60,6 +60,6 @@ public class CountdownHelper {
     public static Integer remainingPercentage(Long millisUntilFinished) {
         long hours = TimeUnit.MILLISECONDS.toHours(millisUntilFinished);
         double div = (double) hours / 24;
-        return (int) (div * 100);
+        return (100 - (int) (div * 100));
     }
 }

@@ -6,10 +6,11 @@ import androidx.lifecycle.LiveData;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.uni.brivia.base.AppExecutors;
-import com.uni.brivia.core.db.dao.UserDao;
-import com.uni.brivia.core.data.UserEntity;
+import com.uni.brivia.core.AppExecutors;
 import com.uni.brivia.core.FirestoreService;
+import com.uni.brivia.core.api.IAuthRepository;
+import com.uni.brivia.core.data.UserEntity;
+import com.uni.brivia.core.db.dao.UserDao;
 
 import java.util.List;
 
@@ -18,11 +19,8 @@ import javax.inject.Singleton;
 
 import timber.log.Timber;
 
-/**
- * TODO: docs
- */
 @Singleton
-public class AuthRepository {
+public class AuthRepositoryImpl implements IAuthRepository {
 
     private final UserDao mUserDao;
 
@@ -33,7 +31,7 @@ public class AuthRepository {
     private final FirestoreService mFirestoreService;
 
     @Inject
-    AuthRepository(@NonNull UserDao userDao, @NonNull FirestoreService firestoreService, @NonNull AppExecutors executors) {
+    AuthRepositoryImpl(@NonNull UserDao userDao, @NonNull FirestoreService firestoreService, @NonNull AppExecutors executors) {
         this.mUserDao = userDao;
         this.mFireAuth = FirebaseAuth.getInstance();
         this.mExecutors = executors;
@@ -42,10 +40,11 @@ public class AuthRepository {
         fetchUsers();
     }
 
-
     /**
      * @return all the users that are saved in the DataBase.
      */
+    @NonNull
+    @Override
     public LiveData<List<UserEntity>> getUsers() {
         return mUserDao.getUsers();
     }
@@ -55,6 +54,8 @@ public class AuthRepository {
      *
      * @return LiveData of the current users data (wrapped in {@link UserEntity}), or null if not found.
      */
+    @NonNull
+    @Override
     @SuppressWarnings("ConstantConditions")
     public LiveData<UserEntity> getCurrentUser() {
         return mUserDao.getCurrentUser(mFireAuth.getCurrentUser().getUid());
@@ -65,6 +66,7 @@ public class AuthRepository {
      *
      * @see FirestoreService
      */
+    @Override
     public void createNewUser(@NonNull AuthResult authResult) {
         mFirestoreService.createUser(authResult)
                 .addOnSuccessListener(res -> {

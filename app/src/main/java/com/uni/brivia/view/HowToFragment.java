@@ -1,7 +1,7 @@
 package com.uni.brivia.view;
 
 import com.uni.brivia.R;
-import com.uni.brivia.base.BaseFragment;
+import com.uni.brivia.core.base.BaseFragment;
 import com.uni.brivia.databinding.FragmentHowToBinding;
 
 import dagger.hilt.android.AndroidEntryPoint;

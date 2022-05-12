@@ -68,8 +68,11 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
     implementation 'com.google.firebase:firebase-firestore'
 
-    // Dependency on core;
+    // Dependency on core
     implementation project(":core")
+
+    // Dependency on game
+    implementation project(":game")
 
     // Test dependencies
     testImplementation 'junit:junit:4.13.2'

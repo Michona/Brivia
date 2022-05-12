@@ -1,4 +1,4 @@
-package com.uni.brivia.base;
+package com.uni.brivia.core.base;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

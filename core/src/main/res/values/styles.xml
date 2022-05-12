@@ -10,6 +10,10 @@
         <item name="android:textSize">32sp</item>
     </style>
 
+    <style name="Brivia.Font.H2">
+        <item name="android:textSize">20sp</item>
+    </style>
+
     <style name="Brivia.Font.Body">
         <item name="android:textSize">16sp</item>
     </style>
@@ -35,6 +39,13 @@
     <style name="Brivia.Button" parent="Widget.MaterialComponents.Button">
         <item name="cornerRadius">15dp</item>
     </style>
+
+    <style name="Brivia.OutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="shapeAppearance">?attr/shapeAppearanceMediumComponent</item>
+        <item name="cornerRadius">15dp</item>
+        <item name="android:minHeight">60dp</item>
+    </style>
+
 
     <style name="Brivia.ProgressBar" parent="Widget.MaterialComponents.CircularProgressIndicator.Medium">
         <item name="trackThickness">30dp</item>

@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
+import com.uni.brivia.core.api.IAuthRepository;
 import com.uni.brivia.core.data.UserEntity;
-import com.uni.brivia.domain.AuthRepository;
 
 import java.util.Comparator;
 import java.util.List;
@@ -19,10 +19,10 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 @HiltViewModel
 public class ScoresViewModel extends ViewModel {
 
-    private final AuthRepository mAuthRepository;
+    private final IAuthRepository mAuthRepository;
 
     @Inject
-    ScoresViewModel(@NonNull AuthRepository authRepository) {
+    ScoresViewModel(@NonNull IAuthRepository authRepository) {
         this.mAuthRepository = authRepository;
     }
 

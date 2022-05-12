@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.uni.brivia.R;
-import com.uni.brivia.base.BaseFragment;
+import com.uni.brivia.core.base.BaseFragment;
 import com.uni.brivia.databinding.FragmentHighScoreBinding;
 import com.uni.brivia.viewmodels.ScoresViewModel;
 

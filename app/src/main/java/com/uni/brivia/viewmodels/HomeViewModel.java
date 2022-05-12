@@ -4,8 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.uni.brivia.core.api.IAuthRepository;
 import com.uni.brivia.core.data.UserEntity;
-import com.uni.brivia.domain.AuthRepository;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -17,18 +17,18 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 @HiltViewModel
 public class HomeViewModel extends ViewModel {
 
-    private final AuthRepository mAuthRepository;
+    private final IAuthRepository mAuthRepository;
 
     public Date todayDate;
 
     @Inject
-    HomeViewModel(@NonNull AuthRepository authRepository) {
+    HomeViewModel(@NonNull IAuthRepository authRepository) {
         this.mAuthRepository = authRepository;
         this.todayDate = new Date(System.currentTimeMillis());
     }
 
     /**
-     * @return the current user from the {@link AuthRepository}
+     * @return the current user from the {@link IAuthRepository}
      */
     public LiveData<UserEntity> getCurrentUser() {
         return mAuthRepository.getCurrentUser();

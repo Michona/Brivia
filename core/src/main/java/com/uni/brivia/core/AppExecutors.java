@@ -1,4 +1,4 @@
-package com.uni.brivia.base;
+package com.uni.brivia.core;
 
 import android.os.Handler;
 import android.os.Looper;

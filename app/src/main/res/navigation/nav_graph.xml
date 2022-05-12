@@ -29,6 +29,14 @@
         <action
             android:id="@+id/action_homeFragment_to_howToFragment"
             app:destination="@id/howToFragment" />
+
+        <action
+            android:id="@+id/action_homeFragment_to_gameFragment"
+            app:destination="@id/gameFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 
     <fragment
@@ -39,4 +47,8 @@
         android:id="@+id/howToFragment"
         android:name="com.uni.brivia.view.HowToFragment"
         android:label="HowToFragment" />
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.uni.brivia.game.view.GameFragment"
+        android:label="GameFragment" />
 </navigation>

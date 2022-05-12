@@ -1,14 +1,20 @@
-package com.uni.brivia.core.db;
+package com.uni.brivia.base;
 
 
 import android.content.Context;
 
 import androidx.room.Room;
 
+import com.uni.brivia.core.api.IAuthRepository;
+import com.uni.brivia.core.api.IGameRepository;
+import com.uni.brivia.core.db.AppDatabase;
 import com.uni.brivia.core.db.dao.UserDao;
+import com.uni.brivia.domain.AuthRepositoryImpl;
+import com.uni.brivia.game.domain.GameRepositoryImpl;
 
 import javax.inject.Singleton;
 
+import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
@@ -33,4 +39,10 @@ public abstract class DbModule {
     static UserDao provideUserDao(AppDatabase database) {
         return database.userDao();
     }
+
+    @Binds
+    abstract IAuthRepository bindAuthRepository(AuthRepositoryImpl impl);
+
+    @Binds
+    abstract IGameRepository bindGameRepository(GameRepositoryImpl impl);
 }

@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "Brivia"
 include ':app'
 include ':core'
+include ':game'

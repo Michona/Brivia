@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.uni.brivia.R;
-import com.uni.brivia.base.BaseFragment;
+import com.uni.brivia.core.base.BaseFragment;
 import com.uni.brivia.databinding.FragmentHomeBinding;
 import com.uni.brivia.domain.CountdownHelper;
 import com.uni.brivia.viewmodels.HomeViewModel;
@@ -33,7 +33,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
 
         homeViewModel.getCurrentUser().observe(getViewLifecycleOwner(), userEntity -> {
             if (userEntity != null) {
-                mBind.vTitle.setText(getResources().getString(R.string.hello_arg, userEntity.getUserName()));
+                mBind.vTitle.setText(getResources().getString(com.uni.brivia.core.R.string.hello_arg, userEntity.getUserName()));
 
                 if (homeViewModel.canUserPlay(userEntity)) {
                     mBind.vOvalBg.setVisibility(View.VISIBLE);
@@ -65,10 +65,8 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
     }
 
     private void setupClickListeners() {
-        mBind.vOvalBg.setOnClickListener(v -> {
-            if (homeViewModel.canUserPlay(homeViewModel.getCurrentUser().getValue())) {
-                // todo: open game
-            }
+        mBind.vGoButton.setOnClickListener(v -> {
+            NavHostFragment.findNavController(this).navigate(R.id.action_homeFragment_to_gameFragment);
         });
 
         mBind.vFAB.setOnClickListener(v -> NavHostFragment.findNavController(this).navigate(R.id.action_homeFragment_to_highScoreFragment));
