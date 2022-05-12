@@ -12,4 +12,7 @@
     <string name="sample_description">Good player?</string>
     <string name="you">You</string>
 
+    <string name="how_to_title">How to play?</string>
+    <string name="how_to_paragraph">Some explanations on how to play the game. \n What else to say? \n maybe smth else?</string>
+
 </resources>

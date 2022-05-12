@@ -71,9 +71,8 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
             }
         });
 
-        mBind.vFAB.setOnClickListener(v -> {
-            NavHostFragment.findNavController(this).navigate(R.id.action_homeFragment_to_highScoreFragment);
-        });
+        mBind.vFAB.setOnClickListener(v -> NavHostFragment.findNavController(this).navigate(R.id.action_homeFragment_to_highScoreFragment));
+        mBind.vTextFindOut.setOnClickListener(v -> NavHostFragment.findNavController(this).navigate(R.id.action_homeFragment_to_howToFragment));
     }
 
     private void startCountdown() {
