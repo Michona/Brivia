@@ -1,11 +1,11 @@
-package com.uni.brivia.db;
+package com.uni.brivia.core.db;
 
 
 import android.content.Context;
 
 import androidx.room.Room;
 
-import com.uni.brivia.db.dao.UserDao;
+import com.uni.brivia.core.db.dao.UserDao;
 
 import javax.inject.Singleton;
 

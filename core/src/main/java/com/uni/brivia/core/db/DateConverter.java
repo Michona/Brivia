@@ -1,4 +1,4 @@
-package com.uni.brivia.db;
+package com.uni.brivia.core.db;
 
 import androidx.room.TypeConverter;
 

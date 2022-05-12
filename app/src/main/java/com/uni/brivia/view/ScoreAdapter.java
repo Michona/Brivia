@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.uni.brivia.R;
 import com.uni.brivia.databinding.ItemScoreBinding;
-import com.uni.brivia.db.entity.UserEntity;
+import com.uni.brivia.core.data.UserEntity;
 
 import java.util.List;
 

@@ -7,9 +7,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.uni.brivia.base.AppExecutors;
-import com.uni.brivia.db.dao.UserDao;
-import com.uni.brivia.db.entity.UserEntity;
-import com.uni.brivia.firestore.FirestoreService;
+import com.uni.brivia.core.db.dao.UserDao;
+import com.uni.brivia.core.data.UserEntity;
+import com.uni.brivia.core.FirestoreService;
 
 import java.util.List;
 

@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
-import com.uni.brivia.db.entity.UserEntity;
+import com.uni.brivia.core.data.UserEntity;
 import com.uni.brivia.domain.AuthRepository;
 
 import java.util.Comparator;

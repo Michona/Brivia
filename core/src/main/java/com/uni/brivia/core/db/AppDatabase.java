@@ -1,12 +1,12 @@
-package com.uni.brivia.db;
+package com.uni.brivia.core.db;
 
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-import com.uni.brivia.db.dao.UserDao;
-import com.uni.brivia.db.entity.UserEntity;
+import com.uni.brivia.core.data.UserEntity;
+import com.uni.brivia.core.db.dao.UserDao;
 
 /**
  * The Room database that contains the Users table

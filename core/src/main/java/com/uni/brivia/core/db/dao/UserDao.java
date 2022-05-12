@@ -1,4 +1,4 @@
-package com.uni.brivia.db.dao;
+package com.uni.brivia.core.db.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.uni.brivia.db.entity.UserEntity;
+import com.uni.brivia.core.data.UserEntity;
 
 import java.util.List;
 

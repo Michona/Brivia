@@ -1,4 +1,4 @@
-package com.uni.brivia.db.entity;
+package com.uni.brivia.core.data;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

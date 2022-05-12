@@ -1,4 +1,4 @@
-package com.uni.brivia.firestore;
+package com.uni.brivia.core;
 
 import androidx.annotation.NonNull;
 
@@ -8,7 +8,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
-import com.uni.brivia.db.entity.UserEntity;
+import com.uni.brivia.core.data.UserEntity;
 
 import org.jetbrains.annotations.Contract;
 
