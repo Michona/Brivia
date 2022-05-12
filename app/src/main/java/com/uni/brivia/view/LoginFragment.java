@@ -23,7 +23,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
     protected void onBind() {
         loginViewModel = new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
 
-        mBind.continueWithGoogle.setOnClickListener(view -> loginViewModel.onContinueWithGoogle());
+        mBind.vContinueWithGoogle.setOnClickListener(view -> loginViewModel.onContinueWithGoogle());
 
         loginViewModel.navigateHome.observe(getViewLifecycleOwner(), shouldNavigate -> {
             if (shouldNavigate) {

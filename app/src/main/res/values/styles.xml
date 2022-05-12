@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Brivia.Font" parent="">
+        <item name="fontFamily">@font/mulish</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Brivia.Font.H1">
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="Brivia.Font.H1.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Brivia.Font.Label">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+
+    <style name="Brivia.Button" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">15dp</item>
+    </style>
+
+</resources>

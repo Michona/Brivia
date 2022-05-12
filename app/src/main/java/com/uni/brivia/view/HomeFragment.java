@@ -8,7 +8,6 @@ import com.uni.brivia.databinding.FragmentHomeBinding;
 import com.uni.brivia.viewmodels.HomeViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
-import timber.log.Timber;
 
 @AndroidEntryPoint
 public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
@@ -25,9 +24,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
 
         homeViewModel.getCurrentUser().observe(getViewLifecycleOwner(), userEntity -> {
             if (userEntity != null) {
-                Timber.d("new user " + userEntity.getUserName());
-            } else {
-                Timber.d("new user NULL");
+                mBind.maintext.setText(getResources().getString(R.string.hello_arg, userEntity.getUserName()));
             }
         });
     }
