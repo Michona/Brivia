@@ -22,4 +22,9 @@
     <string name="continue_button">Continue</string>
     <string name="share_button">Share on instagram</string>
 
+
+
+    <!-- Non translatable -->
+    <string name="google_client_id">690683147136-4gof6hqcdn1f7bnb2um088g08g59gnt3.apps.googleusercontent.com</string>
+
 </resources>

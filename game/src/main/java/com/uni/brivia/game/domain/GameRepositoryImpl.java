@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Transformations;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.uni.brivia.core.AppExecutors;
 import com.uni.brivia.core.FirestoreService;
@@ -30,6 +31,7 @@ public class GameRepositoryImpl implements IGameRepository {
 
     private final QuestionsDao mQuestionsDao;
 
+    private final FirebaseAuth mFireAuth;
 
     /**
      * Randomly chosen from the list of questions.
@@ -42,23 +44,28 @@ public class GameRepositoryImpl implements IGameRepository {
         this.mExecutors = executors;
         this.mFirestoreService = firestoreService;
         this.mQuestionsDao = questionsDao;
+        this.mFireAuth = FirebaseAuth.getInstance();
 
         fetchQuestions();
     }
 
     @Override
     public GameResult uploadAnswerChoice(Integer answerId) {
+
         if (mTodayQuestion.getCorrectAnswerId().equals(answerId)) {
             /* Question is correct! */
+            updateUserScore(POINTS_FOR_SUCCESS + POINTS_FOR_TRYING);
             return new GameResult(true, POINTS_FOR_SUCCESS, POINTS_FOR_TRYING);
         } else {
             /* Question is not correct */
+            updateUserScore(POINTS_FOR_ERROR + POINTS_FOR_TRYING);
             return new GameResult(false, POINTS_FOR_ERROR, POINTS_FOR_TRYING);
         }
     }
 
     @Override
     public GameResult timeUp() {
+        updateUserScore(POINTS_FOR_ERROR + POINTS_FOR_TRYING);
         return new GameResult(false, POINTS_FOR_ERROR, POINTS_FOR_TRYING);
     }
 
@@ -72,6 +79,10 @@ public class GameRepositoryImpl implements IGameRepository {
                 return mTodayQuestion;
             }
         });
+    }
+
+    private void updateUserScore(Integer points) {
+        mFirestoreService.updateUserScore(mFireAuth.getUid(), points);
     }
 
     private static class QuestionsComparator implements Comparator<QuestionEntity> {

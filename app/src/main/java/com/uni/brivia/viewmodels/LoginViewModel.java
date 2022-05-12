@@ -27,11 +27,6 @@ public class LoginViewModel extends ViewModel {
 
         shouldInvokeGoogleSignIn = new MutableLiveData<>(false);
         navigateHome = new MutableLiveData<>(false);
-
-        // TODO: check if we are already authenticated
-        if (FirebaseAuth.getInstance().getUid() != null) {
-            navigateHome.postValue(true);
-        }
     }
 
     public void onSignInSuccess(@NonNull AuthResult result) {

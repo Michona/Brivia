@@ -9,7 +9,7 @@ import com.uni.brivia.core.data.UserEntity;
 import java.util.List;
 
 /**
- * TODO: docs
+ * Contains logic to deal with users, syncing and fetching the current user.
  */
 public interface IAuthRepository {
 
@@ -18,6 +18,11 @@ public interface IAuthRepository {
 
     @NonNull
     LiveData<List<UserEntity>> getUsers();
+
+    /**
+     * Fetches users from server and saves to our Room Db.
+     */
+    void syncUsers();
 
     void createNewUser(@NonNull AuthResult authResult);
 }

@@ -77,6 +77,14 @@ public class AuthRepositoryImpl implements IAuthRepository {
     }
 
     /**
+     * Syncs the server state to local room.
+     */
+    @Override
+    public void syncUsers() {
+        fetchUsers();
+    }
+
+    /**
      * Listens to changes from Server and updates disk.
      * Called when this repository is created.
      */
@@ -93,7 +101,6 @@ public class AuthRepositoryImpl implements IAuthRepository {
     }
 
     private void insertToDb(QueryDocumentSnapshot document) {
-        Timber.d("Inserting to DB");
         mExecutors.diskIO().execute(() -> mUserDao.insertUser(FirestoreService.parseUser(document.getData())));
     }
 }

@@ -34,6 +34,10 @@ public class HomeViewModel extends ViewModel {
         return mAuthRepository.getCurrentUser();
     }
 
+    public void syncUsers() {
+        mAuthRepository.syncUsers();
+    }
+
     /**
      * @return true if the user can play the game today.
      */

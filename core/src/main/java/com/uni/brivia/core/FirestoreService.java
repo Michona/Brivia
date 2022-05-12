@@ -5,7 +5,6 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
@@ -15,6 +14,7 @@ import com.uni.brivia.core.data.UserEntity;
 import org.jetbrains.annotations.Contract;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,9 +22,6 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-/**
- * TODO: docs
- */
 @Singleton
 public class FirestoreService {
 
@@ -60,10 +57,20 @@ public class FirestoreService {
     }
 
     /**
-     * @return the {@link Task} for the document to fetch the current user from server.
+     * Updates the user score with the points he received.
+     * Fetches the user collection and finds the user doc,
+     * and then adds the received points to the current ones.
      */
-    public Task<DocumentSnapshot> getUserDocument(String uid) {
-        return db.collection(COLLECTION_USERS).document(uid).get();
+    public void updateUserScore(String uid, Integer receivedPoints) {
+        db.collection(COLLECTION_USERS).document(uid).get().addOnSuccessListener(user -> {
+                    Map<String, Object> data = new HashMap<>();
+                    /* Add the points */
+                    data.put(USER_KEY_SCORE, Math.toIntExact((Long) user.getData().get(USER_KEY_SCORE)) + receivedPoints);
+                    /* Set the timestamp to current. */
+                    data.put(USER_KEY_TIMESTAMP, Calendar.getInstance().getTimeInMillis());
+                    db.collection(COLLECTION_USERS).document(uid).set(data, SetOptions.merge());
+                }
+        );
     }
 
     /**

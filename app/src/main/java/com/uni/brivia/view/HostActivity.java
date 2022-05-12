@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -42,9 +43,8 @@ public class HostActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         /* Creates sign in options. */
-        // TODO: fix the token id, put it in string.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("690683147136-4gof6hqcdn1f7bnb2um088g08g59gnt3.apps.googleusercontent.com")
+                .requestIdToken(getResources().getString(com.uni.brivia.core.R.string.google_client_id))
                 .requestEmail()
                 .requestProfile()
                 .build();
@@ -72,10 +72,7 @@ public class HostActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * TODO: docs
-     */
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+    private void firebaseAuthWithGoogle(@NonNull GoogleSignInAccount acct) {
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnSuccessListener(this, authResult -> {

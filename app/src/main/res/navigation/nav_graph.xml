@@ -2,9 +2,26 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/loadingFragment">
 
     <include app:graph="@navigation/game_nav_graph" />
+
+    <fragment
+        android:id="@+id/loadingFragment"
+        android:name="com.uni.brivia.view.LoadingFragment"
+        android:label="LoadingFragment">
+        <action
+            android:id="@+id/action_loadingFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loadingFragment"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_loadingFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/loadingFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
     <fragment
         android:id="@+id/loginFragment"

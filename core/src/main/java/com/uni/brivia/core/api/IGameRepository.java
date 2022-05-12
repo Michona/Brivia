@@ -6,7 +6,7 @@ import com.uni.brivia.core.data.GameResult;
 import com.uni.brivia.core.data.QuestionEntity;
 
 /**
- * TODO:
+ * Contains logic to deal with the game state and answer choices.
  */
 public interface IGameRepository {
 
@@ -25,7 +25,7 @@ public interface IGameRepository {
     GameResult timeUp();
 
     /**
-     *
+     * @return the daily question that the user needs to answer.
      */
     LiveData<QuestionEntity> getDailyQuestion();
 

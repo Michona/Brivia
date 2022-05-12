@@ -30,6 +30,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
     @Override
     protected void onBind() {
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        homeViewModel.syncUsers();
 
         homeViewModel.getCurrentUser().observe(getViewLifecycleOwner(), userEntity -> {
             if (userEntity != null) {
