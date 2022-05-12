@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModel;
 import com.uni.brivia.core.data.UserEntity;
 import com.uni.brivia.domain.AuthRepository;
 
-import java.time.temporal.ChronoField;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
@@ -44,6 +44,7 @@ public class HomeViewModel extends ViewModel {
         if (user.getLastPlayed() == null) {
             return true;
         }
-        return user.getLastPlayed().toInstant().get(ChronoField.DAY_OF_YEAR) == todayDate.toInstant().get(ChronoField.DAY_OF_YEAR);
+        long diff = todayDate.getTime() - user.getLastPlayed().getTime();
+        return TimeUnit.MILLISECONDS.toHours(diff) >= 24;
     }
 }
