@@ -24,8 +24,10 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
 
         homeViewModel.getCurrentUser().observe(getViewLifecycleOwner(), userEntity -> {
             if (userEntity != null) {
-                mBind.maintext.setText(getResources().getString(R.string.hello_arg, userEntity.getUserName()));
+                mBind.vTitle.setText(getResources().getString(R.string.hello_arg, userEntity.getUserName()));
             }
         });
+
+        mBind.vOvalBg.setOnClickListener(v -> {});
     }
 }

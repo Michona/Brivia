@@ -19,6 +19,10 @@
         <item name="android:textColor">@color/grey</item>
     </style>
 
+    <style name="Brivia.Font.Label.Highlighted">
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
 
     <style name="Brivia.Button" parent="Widget.MaterialComponents.Button">
         <item name="cornerRadius">15dp</item>

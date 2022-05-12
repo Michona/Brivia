@@ -4,5 +4,8 @@
     <string name="hello_arg">Hi %s!</string>
     <string name="continue_with_google">Continue with google</string>
     <string name="showcase">Ready to showcase how much you know your culture?</string>
+    <string name="go">Go!</string>
+    <string name="how">How do I play?</string>
+    <string name="find_out">Find out here!</string>
 
 </resources>

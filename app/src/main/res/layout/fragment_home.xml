@@ -6,7 +6,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/maintext"
+            android:id="@+id/vTitle"
             style="@style/Brivia.Font.H1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -15,5 +15,73 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/vOvalBg"
+            android:layout_width="310dp"
+            android:layout_height="310dp"
+            android:layout_marginTop="50dp"
+            android:alpha="0.1"
+            android:src="@drawable/ic_oval"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vTitle" />
+
+        <ImageView
+            android:id="@+id/vGoButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:src="@drawable/ic_oval"
+            app:layout_constraintBottom_toBottomOf="@id/vOvalBg"
+            app:layout_constraintLeft_toLeftOf="@id/vOvalBg"
+            app:layout_constraintRight_toRightOf="@id/vOvalBg"
+            app:layout_constraintTop_toTopOf="@id/vOvalBg" />
+
+        <TextView
+            android:id="@+id/vGoText"
+            style="@style/Brivia.Font.H1.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/go"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/vOvalBg"
+            app:layout_constraintLeft_toLeftOf="@id/vOvalBg"
+            app:layout_constraintRight_toRightOf="@id/vOvalBg"
+            app:layout_constraintTop_toTopOf="@id/vOvalBg" />
+
+        <TextView
+            android:id="@+id/vTextHow"
+            style="@style/Brivia.Font.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/how"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vOvalBg" />
+
+        <TextView
+            android:id="@+id/vTextFindOut"
+            style="@style/Brivia.Font.Label.Highlighted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/find_out"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vTextHow" />
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/vFAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/general_margin"
+            android:src="@drawable/ic_highscore"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:tint="@color/white" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
