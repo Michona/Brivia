@@ -1,5 +1,7 @@
 package com.uni.brivia.viewmodels;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -16,10 +18,13 @@ public class HomeViewModel extends ViewModel {
     private final AuthRepository mAuthRepository;
 
     @Inject
-    HomeViewModel(AuthRepository authRepository) {
+    HomeViewModel(@NonNull AuthRepository authRepository) {
         this.mAuthRepository = authRepository;
     }
 
+    /**
+     * @return the current user from the {@link AuthRepository}
+     */
     public LiveData<UserEntity> getCurrentUser() {
         return mAuthRepository.getCurrentUser();
     }

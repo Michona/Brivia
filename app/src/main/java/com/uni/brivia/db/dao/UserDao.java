@@ -19,6 +19,10 @@ public interface UserDao {
     @Query("SELECT * FROM Users")
     LiveData<List<UserEntity>> getUsers();
 
+
+    @Query("SELECT * FROM USERS WHERE uid == :userId")
+    LiveData<UserEntity> getCurrentUser(String userId);
+
     /**
      * Insert a user in the database. If the user already exists, replace it.
      *

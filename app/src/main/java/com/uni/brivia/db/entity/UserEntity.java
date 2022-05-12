@@ -1,9 +1,12 @@
 package com.uni.brivia.db.entity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import java.util.Date;
 
 
 /**
@@ -14,15 +17,25 @@ public class UserEntity {
 
     @NonNull
     @PrimaryKey
-    @ColumnInfo(name = "userid")
+    @ColumnInfo(name = "uid")
     private String mId;
 
-    @ColumnInfo(name = "username")
+    @ColumnInfo(name = "name")
     private String mUserName;
 
-    public UserEntity(@NonNull String id, String userName) {
+    @Nullable
+    @ColumnInfo(name = "lastPlayed")
+    private Date mLastPlayed;
+
+    @NonNull
+    @ColumnInfo(name = "score")
+    private Integer mScore;
+
+    public UserEntity(@NonNull String id, String userName, @Nullable Date lastPlayed, @NonNull Integer score) {
         this.mId = id;
         this.mUserName = userName;
+        this.mScore = score;
+        this.mLastPlayed = lastPlayed;
     }
 
     public String getId() {
@@ -31,5 +44,13 @@ public class UserEntity {
 
     public String getUserName() {
         return mUserName;
+    }
+
+    public Date getLastPlayed() {
+        return mLastPlayed;
+    }
+
+    public Integer getScore() {
+        return mScore;
     }
 }

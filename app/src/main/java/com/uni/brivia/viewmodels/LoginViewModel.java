@@ -35,7 +35,7 @@ public class LoginViewModel extends ViewModel {
     }
 
     public void onSignInSuccess(@NonNull AuthResult result) {
-        // TODO: deal with result
+        mAuthRepository.createNewUser(result);
         navigateHome.postValue(true);
     }
 
