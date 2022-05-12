@@ -5,26 +5,33 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.List;
+
 @Entity(tableName = "questions")
 public class QuestionEntity {
 
     @NonNull
     @PrimaryKey
     @ColumnInfo(name = "id")
-    private Integer mId;
+    private final Integer mId;
 
     @NonNull
-    @ColumnInfo(name = "title")
-    private String mTitle;
+    @ColumnInfo(name = "content")
+    private final String mContent;
 
     @NonNull
-    @ColumnInfo(name = "points")
-    private Integer mPoints;
+    @ColumnInfo(name = "answers")
+    private final List<AnswerEntity> mAnswers;
 
-    public QuestionEntity(@NonNull Integer id, @NonNull String title, @NonNull Integer points) {
+    @NonNull
+    @ColumnInfo(name = "correct-answer-id")
+    private final String mCorrectAnswerId;
+
+    public QuestionEntity(@NonNull Integer id, @NonNull String content, @NonNull List<AnswerEntity> answers, @NonNull String answerId) {
         this.mId = id;
-        this.mTitle = title;
-        this.mPoints = points;
+        this.mContent = content;
+        this.mAnswers = answers;
+        this.mCorrectAnswerId = answerId;
     }
 
     @NonNull
@@ -33,12 +40,17 @@ public class QuestionEntity {
     }
 
     @NonNull
-    public String getTitle() {
-        return mTitle;
+    public String getContent() {
+        return mContent;
     }
 
     @NonNull
-    public Integer getPoints() {
-        return mPoints;
+    public List<AnswerEntity> getAnswers() {
+        return mAnswers;
+    }
+
+    @NonNull
+    public String getCorrectAnswerId() {
+        return mCorrectAnswerId;
     }
 }
