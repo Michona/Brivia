@@ -15,6 +15,11 @@
     <string name="how_to_title">How to play?</string>
     <string name="how_to_paragraph">Some explanations on how to play the game. \n What else to say? \n maybe smth else?</string>
 
-    <string name="check">Check</string>
+    <string name="correct_solution">for correct answer</string>
+    <string name="incorrect_solution">for wrong answer :(</string>
+    <string name="just_trying">just for trying</string>
+
+    <string name="continue_button">Continue</string>
+    <string name="share_button">Share on instagram</string>
 
 </resources>

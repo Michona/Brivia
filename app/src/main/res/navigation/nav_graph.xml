@@ -4,6 +4,8 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/loginFragment">
 
+    <include app:graph="@navigation/game_nav_graph" />
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.uni.brivia.view.LoginFragment"
@@ -32,7 +34,7 @@
 
         <action
             android:id="@+id/action_homeFragment_to_gameFragment"
-            app:destination="@id/gameFragment"
+            app:destination="@id/game_nav_graph"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_enter_anim"
@@ -47,8 +49,5 @@
         android:id="@+id/howToFragment"
         android:name="com.uni.brivia.view.HowToFragment"
         android:label="HowToFragment" />
-    <fragment
-        android:id="@+id/gameFragment"
-        android:name="com.uni.brivia.game.view.GameFragment"
-        android:label="GameFragment" />
+
 </navigation>

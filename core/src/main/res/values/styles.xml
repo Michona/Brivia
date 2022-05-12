@@ -38,6 +38,7 @@
 
     <style name="Brivia.Button" parent="Widget.MaterialComponents.Button">
         <item name="cornerRadius">15dp</item>
+        <item name="android:minHeight">60dp</item>
     </style>
 
     <style name="Brivia.OutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
@@ -53,6 +54,12 @@
         <item name="indicatorSize">240dp</item>
         <item name="trackColor">@color/grey_10</item>
         <item name="minWidth">200dp</item>
+    </style>
+
+    <style name="Brivia.LinearProgressBar" parent="Widget.MaterialComponents.LinearProgressIndicator">
+        <item name="trackThickness">8dp</item>
+        <item name="trackColor">@color/grey_10</item>
+        <item name="trackCornerRadius">10dp</item>
     </style>
 
 </resources>
