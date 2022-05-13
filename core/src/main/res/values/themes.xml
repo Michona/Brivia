@@ -9,6 +9,7 @@
         <item name="colorOnSecondary">@color/black</item>
 
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:statusBarColor">@color/light_green</item>
+        <item name="android:windowBackground">@color/light_green</item>
     </style>
 </resources>

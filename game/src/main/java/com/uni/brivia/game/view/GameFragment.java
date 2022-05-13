@@ -73,8 +73,7 @@ public class GameFragment extends BaseFragment<FragmentGameBinding> {
             }
 
             public void onFinish() {
-                // TODO REvert
-                // viewModel.timeUp();
+                viewModel.timeUp();
             }
         }.start();
     }
