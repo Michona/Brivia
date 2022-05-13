@@ -75,7 +75,10 @@ public class GameRepositoryImpl implements IGameRepository {
             if (questions.isEmpty()) {
                 return null;
             } else {
-                mTodayQuestion = questions.stream().sorted(new QuestionsComparator()).collect(Collectors.toList()).get(getRandomQuestionPosition());
+                try {
+                    mTodayQuestion = questions.stream().sorted(new QuestionsComparator()).collect(Collectors.toList()).get(getRandomQuestionPosition());
+                } catch (Exception ignored) {
+                }
                 return mTodayQuestion;
             }
         });
