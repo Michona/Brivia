@@ -42,14 +42,14 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
                     mBind.vGoText.setVisibility(View.VISIBLE);
                     mBind.vIndicator.setVisibility(View.GONE);
                     mBind.vGoRemainingTimer.setVisibility(View.GONE);
-                    mBind.vGoRemainingDescrr.setVisibility(View.GONE);
+                    mBind.vGoRemainingDescr.setVisibility(View.GONE);
                 } else {
                     mBind.vOvalBg.setVisibility(View.INVISIBLE);
-                    mBind.vGoButton.setVisibility(View.INVISIBLE);
+                    mBind.vGoButton.setVisibility(View.GONE);
                     mBind.vGoText.setVisibility(View.GONE);
                     mBind.vIndicator.setVisibility(View.VISIBLE);
                     mBind.vGoRemainingTimer.setVisibility(View.VISIBLE);
-                    mBind.vGoRemainingDescrr.setVisibility(View.VISIBLE);
+                    mBind.vGoRemainingDescr.setVisibility(View.VISIBLE);
                 }
             }
         });

@@ -70,17 +70,19 @@
             style="@style/Brivia.Font.H1.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@id/vOvalBg"
             app:layout_constraintLeft_toLeftOf="@id/vOvalBg"
             app:layout_constraintRight_toRightOf="@id/vOvalBg"
             app:layout_constraintTop_toTopOf="@id/vOvalBg" />
 
         <TextView
-            android:id="@+id/vGoRemainingDescrr"
+            android:id="@+id/vGoRemainingDescr"
             style="@style/Brivia.Font.Label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/until_next"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@id/vGoRemainingTimer"
             app:layout_constraintLeft_toLeftOf="@id/vOvalBg"
             app:layout_constraintRight_toRightOf="@id/vOvalBg" />
