@@ -2,26 +2,27 @@
     <string name="app_name">Brivia</string>
 
     <string name="hello_arg">Hi %s!</string>
-    <string name="continue_with_google">Continue with google</string>
-    <string name="showcase">Ready to showcase how much you know your culture?</string>
-    <string name="go">Go!</string>
-    <string name="how">How do I play?</string>
-    <string name="find_out">Find out here!</string>
-    <string name="until_next">Next round in</string>
-    <string name="highscore">High Scores</string>
+    <string name="continue_with_google">Продължете с google</string>
+    <string name="showcase">Готови ли сте да покажете колко добре познавате културата си?</string>
+    <string name="go">Играй!</string>
+    <string name="how">Как да играя?</string>
+    <string name="find_out">Разберете тук!</string>
+    <string name="until_next">Следващият въпрос в</string>
+    <string name="highscore">Highscores</string>
     <string name="sample_description">Good player?</string>
-    <string name="you">You</string>
+    <string name="you">Вие</string>
 
     <string name="how_to_title">How to play?</string>
-    <string name="how_to_paragraph">Some explanations on how to play the game. \n What else to say? \n maybe smth else?</string>
+    <string name="how_to_paragraph">Put your knowledge about Bulgaria to the test and battle it out with those around you!
+. \n Brivia gives players one chance a day to guess a random question about Bularuan culture, history and literature. After 24 hours there’s a new question of the day.\n When signing up with Google, you can view high-scores globally and locally and you can share your scores on Instagram. The faster you solve it the more points to get!
+</string>
 
-    <string name="correct_solution">for correct answer</string>
-    <string name="incorrect_solution">for wrong answer :(</string>
-    <string name="just_trying">just for trying</string>
+    <string name="correct_solution">за верен отговор</string>
+    <string name="incorrect_solution">за грешен отговор :(</string>
+    <string name="just_trying">просто за опита</string>
 
-    <string name="continue_button">Continue</string>
-    <string name="share_button">Share on instagram</string>
-
+    <string name="continue_button">Продължи</string>
+    <string name="share_button">Споделете в инстаграм</string>
 
 
     <!-- Non translatable -->
