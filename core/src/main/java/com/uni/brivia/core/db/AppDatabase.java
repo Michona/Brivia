@@ -11,7 +11,7 @@ import com.uni.brivia.core.db.dao.QuestionsDao;
 import com.uni.brivia.core.db.dao.UserDao;
 
 /**
- * The Room database that contains the Users table
+ * The Room database that contains the tables we need.
  */
 @Database(entities = {UserEntity.class, QuestionEntity.class}, version = 1, exportSchema = false)
 @TypeConverters({DateConverter.class, ArrayConverter.class})

@@ -17,7 +17,7 @@ public interface QuestionsDao {
     LiveData<List<QuestionEntity>> getQuestions();
 
     /**
-     * Insert a question in the database. If the user already exists, replace it.
+     * Insert a question in the database. If the question already exists, replace it.
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(QuestionEntity questionEntity);

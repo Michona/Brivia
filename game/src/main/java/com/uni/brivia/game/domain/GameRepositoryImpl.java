@@ -34,8 +34,10 @@ public class GameRepositoryImpl implements IGameRepository {
     private final FirebaseAuth mFireAuth;
 
     /**
-     * Randomly chosen from the list of questions.
+     * Chosen from the list of questions based on the today date
      * Answers from users are compared to this.
+     *
+     * @see #getRandomQuestionPosition()
      */
     private QuestionEntity mTodayQuestion;
 
@@ -88,13 +90,6 @@ public class GameRepositoryImpl implements IGameRepository {
         mFirestoreService.updateUserScore(mFireAuth.getUid(), points);
     }
 
-    private static class QuestionsComparator implements Comparator<QuestionEntity> {
-        @Override
-        public int compare(QuestionEntity current, QuestionEntity next) {
-            return current.getId().compareTo(next.getId());
-        }
-    }
-
     /**
      * Based on today's date it chooses an id for question.
      * It's so that everyone gets the same question for the same day.
@@ -119,6 +114,13 @@ public class GameRepositoryImpl implements IGameRepository {
 
     private void insertToDb(QueryDocumentSnapshot document) {
         mExecutors.diskIO().execute(() -> mQuestionsDao.insert(FirestoreService.parseQuestion(document.getData())));
+    }
+
+    private static class QuestionsComparator implements Comparator<QuestionEntity> {
+        @Override
+        public int compare(QuestionEntity current, QuestionEntity next) {
+            return current.getId().compareTo(next.getId());
+        }
     }
 
     /**

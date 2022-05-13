@@ -9,9 +9,6 @@ import androidx.room.PrimaryKey;
 import java.util.Date;
 
 
-/**
- * TODO: docs
- */
 @Entity(tableName = "users")
 public class UserEntity {
 
