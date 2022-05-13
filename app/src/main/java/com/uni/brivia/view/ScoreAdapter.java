@@ -75,9 +75,11 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ScoreViewHol
         if (entity.getId().equals(mUserId)) {
             holder.binding.vName.setText(com.uni.brivia.core.R.string.you);
             holder.binding.vName.setTextColor(holder.binding.getRoot().getContext().getResources().getColor(com.uni.brivia.core.R.color.red));
+            holder.binding.vDescription.setText(com.uni.brivia.core.R.string.scores_description_you);
         } else {
             holder.binding.vName.setText(entity.getUserName());
             holder.binding.vName.setTextColor(holder.binding.getRoot().getContext().getResources().getColor(com.uni.brivia.core.R.color.black));
+            holder.binding.vDescription.setText(com.uni.brivia.core.R.string.scores_description_others);
         }
         holder.binding.vScore.setText(String.valueOf(entity.getScore()));
 

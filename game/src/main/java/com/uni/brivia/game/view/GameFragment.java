@@ -1,5 +1,6 @@
 package com.uni.brivia.game.view;
 
+import android.annotation.SuppressLint;
 import android.os.CountDownTimer;
 
 import androidx.lifecycle.ViewModelProvider;
@@ -9,6 +10,7 @@ import com.uni.brivia.core.api.IGameRepository;
 import com.uni.brivia.core.base.BaseFragment;
 import com.uni.brivia.game.R;
 import com.uni.brivia.game.databinding.FragmentGameBinding;
+import com.uni.brivia.game.domain.GameImageMapper;
 import com.uni.brivia.game.viewmodel.GameViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -26,6 +28,7 @@ public class GameFragment extends BaseFragment<FragmentGameBinding> {
         super(R.layout.fragment_game);
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onBind() {
         viewModel = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
@@ -43,6 +46,7 @@ public class GameFragment extends BaseFragment<FragmentGameBinding> {
                 mBind.vFirstAnswer.setText(question.getAnswers().get(0));
                 mBind.vSecondAnswer.setText(question.getAnswers().get(1));
                 mBind.vThirdAnswer.setText(question.getAnswers().get(2));
+                mBind.vImage.setImageDrawable(getResources().getDrawable(GameImageMapper.getDrawableForQuestion(question.getId())));
             }
         });
 
@@ -69,7 +73,8 @@ public class GameFragment extends BaseFragment<FragmentGameBinding> {
             }
 
             public void onFinish() {
-                viewModel.timeUp();
+                // TODO REvert
+                // viewModel.timeUp();
             }
         }.start();
     }

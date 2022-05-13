@@ -9,7 +9,8 @@
     <string name="find_out">Разберете тук!</string>
     <string name="until_next">Следващият въпрос в</string>
     <string name="highscore">Highscores</string>
-    <string name="sample_description">Good player?</string>
+    <string name="scores_description_others">Competition?</string>
+    <string name="scores_description_you">You are amazing!</string>
     <string name="you">Вие</string>
 
     <string name="how_to_title">How to play?</string>
