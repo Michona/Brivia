@@ -3,13 +3,13 @@
 
     <string name="hello_arg">Здравей, %s!</string>
     <string name="continue_with_google">Продължете с Google</string>
-    <string name="showcase">Тествай своето знание за Българската архитектура! </string>
+    <string name="showcase">Тествай знанието си за архитектурата на България!</string>
     <string name="go">Играй!</string>
     <string name="how">Как да играя?</string>
     <string name="find_out">Разберете тук!</string>
     <string name="until_next">Опитай пак след: </string>
     <string name="highscore">Рекорди: </string>
-    <string name="scores_description_others">Добро претставяне!</string>
+    <string name="scores_description_others">Добро представяне!</string>
     <string name="scores_description_you">Браво за теб!</string>
     <string name="you">Вие</string>
 
