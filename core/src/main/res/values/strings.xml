@@ -1,30 +1,27 @@
 <resources>
     <string name="app_name">Brivia</string>
 
-    <string name="hello_arg">Hi %s!</string>
-    <string name="continue_with_google">Продължете с google</string>
-    <string name="showcase">Готови ли сте да покажете колко добре познавате културата си?</string>
+    <string name="hello_arg">Здравей, %s!</string>
+    <string name="continue_with_google">Продължете с Google</string>
+    <string name="showcase">Тествай своето знание за Българската архитектура! </string>
     <string name="go">Играй!</string>
     <string name="how">Как да играя?</string>
     <string name="find_out">Разберете тук!</string>
-    <string name="until_next">Следващият въпрос в</string>
-    <string name="highscore">Highscores</string>
-    <string name="scores_description_others">Competition?</string>
-    <string name="scores_description_you">You are amazing!</string>
+    <string name="until_next">Опитай пак след: </string>
+    <string name="highscore">Рекорди: </string>
+    <string name="scores_description_others">Добро претставяне!</string>
+    <string name="scores_description_you">Браво за теб!</string>
     <string name="you">Вие</string>
 
-    <string name="how_to_title">How to play?</string>
-    <string name="how_to_paragraph">Put your knowledge about Bulgaria to the test and battle it out with those around you!
-. \n Brivia gives players one chance a day to guess a random question about Bularuan culture, history and literature. After 24 hours there’s a new question of the day.\n When signing up with Google, you can view high-scores globally and locally and you can share your scores on Instagram. The faster you solve it the more points to get!
-</string>
+    <string name="how_to_title">Правила на играта: </string>
+    <string name="how_to_paragraph"> Изпробвайте знанията си за България и надпреварвайте се с хората около вас!\n\nBrivia дава на играчите един шанс на ден да отгатнат произволен въпрос за културата, историята и архитектурата на България. След 24 часа има нов въпрос на деня.\n\nКогато се регистрирате в Google, можете да преглеждате най-високите резултати глобално и локално и можете да споделяте резултатите си в Instagram. Колкото по-бързо го решите, толкова повече точки ще получите!</string>
 
-    <string name="correct_solution">за верен отговор</string>
-    <string name="incorrect_solution">за грешен отговор :(</string>
-    <string name="just_trying">просто за опита</string>
+    <string name="correct_solution">за верен отговор  </string>
+    <string name="incorrect_solution">за грешен отговор : ( </string>
+    <string name="just_trying">просто за опита: </string>
 
     <string name="continue_button">Продължи</string>
-    <string name="share_button">Споделете в инстаграм</string>
-
+    <string name="share_button">Споделете в Instagram</string>
 
     <!-- Non translatable -->
     <string name="google_client_id">690683147136-4gof6hqcdn1f7bnb2um088g08g59gnt3.apps.googleusercontent.com</string>
